@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using User.API.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,13 +10,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-#region Configurations
-
+// Configurations
 builder.ConfigureIdentity();
-
-#endregion
+builder.ConfigureEntityFramework();
 
 var app = builder.Build();
+
+app.MapIdentityApi<IdentityUser>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -27,7 +28,5 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
-app.MapControllers();
 
 app.Run();
