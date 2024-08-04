@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace User.API.Infrastructure.Data
+namespace UserManager.Users.Api.Infrastructure.Data
 {
     internal class Seed
     {

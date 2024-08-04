@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using User.API.Infrastructure.Data;
+using UserManager.Users.Api.Infrastructure.Data;
 
-namespace User.API.Configurations
+namespace UserManager.Users.Api.Configurations
 {
     public static class IdentityConfiguration
     {

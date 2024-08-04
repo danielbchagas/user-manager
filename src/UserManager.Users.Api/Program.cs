@@ -1,7 +1,9 @@
 using MassTransit;
 using Microsoft.AspNetCore.Identity;
-using User.API.Configurations;
-using User.API.Entities;
+using UserManager.Users.Api.Configurations;
+using UserManager.Users.Api.Entities;
+using UserManager.Users.Api.Infrastructure.Services;
+using UserManager.BuildingBlocks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,16 +22,24 @@ var app = builder.Build();
 
 app.MapIdentityApi<IdentityUser>();
 
-app.MapPost("/publish", async (UserManager<IdentityUser> userManager, HttpContext httpContext, IPublishEndpoint publishEndpoint, Message message, CancellationToken stoppingToken) =>
+app.MapPost("/publish", async (UserManager<IdentityUser> userManager, HttpContext httpContext, IMessageSender messageSender) =>
 {
     var user = await userManager.GetUserAsync(httpContext.User);
     
     if (user == null) return Results.Unauthorized();
 
-    message.Update(user);
+    var message = new Message(user.Id, user.Email);
+    var validation = message.IsValid();
+
+    if (validation.status == false)
+    {
+        var response = new ApiReponse(validation.status, validation.messages);
+        return Results.BadRequest(response);
+    }
     
-    await publishEndpoint.Publish(message, stoppingToken);
+    await messageSender.SendMessageAsync(message);
     return Results.Ok();
+
 })
 .RequireAuthorization();
 

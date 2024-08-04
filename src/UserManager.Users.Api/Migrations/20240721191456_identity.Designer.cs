@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using User.API.Infrastructure.Data;
+using UserManager.Users.Api.Infrastructure.Data;
 
 #nullable disable
 
-namespace User.API.Migrations
+namespace UserManager.Users.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240721191456_identity")]
