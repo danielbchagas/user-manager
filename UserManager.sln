@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserManager.Users.Api", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManager.BuildingBlocks", "src\UserManager.BuildingBlocks\UserManager.BuildingBlocks.csproj", "{C1B290B7-1616-4C18-BDD2-7B2A97775264}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManager.Customers.Api", "src\UserManager.Customers.Api\UserManager.Customers.Api.csproj", "{9206AD75-98A9-49C3-9E01-1EB194099A99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C1B290B7-1616-4C18-BDD2-7B2A97775264}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1B290B7-1616-4C18-BDD2-7B2A97775264}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1B290B7-1616-4C18-BDD2-7B2A97775264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9206AD75-98A9-49C3-9E01-1EB194099A99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9206AD75-98A9-49C3-9E01-1EB194099A99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9206AD75-98A9-49C3-9E01-1EB194099A99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9206AD75-98A9-49C3-9E01-1EB194099A99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

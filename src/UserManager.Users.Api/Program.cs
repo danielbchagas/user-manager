@@ -1,7 +1,6 @@
 using MassTransit;
 using Microsoft.AspNetCore.Identity;
 using UserManager.Users.Api.Configurations;
-using UserManager.Users.Api.Entities;
 using UserManager.Users.Api.Infrastructure.Services;
 using UserManager.BuildingBlocks;
 

@@ -1,5 +1,5 @@
 using MassTransit;
-using UserManager.Users.Api.Entities;
+using UserManager.BuildingBlocks;
 
 namespace UserManager.Users.Api.Infrastructure.Services;
 

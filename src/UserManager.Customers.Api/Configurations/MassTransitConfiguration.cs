@@ -1,9 +1,7 @@
 using MassTransit;
-using MassTransit.Transports.Fabric;
-using UserManager.BuildingBlocks;
-using UserManager.Users.Api.Infrastructure.Services;
+using UserManager.Customers.Api.Infrastructure.Services;
 
-namespace UserManager.Users.Api.Configurations;
+namespace UserManager.Customers.Api.Configurations;
 
 public static class MassTransitConfiguration
 {
@@ -15,14 +13,14 @@ public static class MassTransitConfiguration
             {
                 busConfigurator.Host(builder.Configuration.GetConnectionString("RabbitMq"));
                 
-                busConfigurator.Publish<Message>(p =>
+                busConfigurator.ReceiveEndpoint("usermanager.users", ep =>
                 {
-                    p.ExchangeType = nameof(ExchangeType.Direct);
-                    p.BindQueue("usermanager.users", "usermanager.users");
+                    ep.ConfigureConsumer<MessageConsumer>(ctx);
                 });
             });
         });
         
-        builder.Services.AddScoped<IMessageSender, MessageSender>();
+        builder.Services.AddMassTransitHostedService();
+        builder.Services.AddHostedService<MessageReceiver>();
     }
 }

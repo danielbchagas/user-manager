@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Identity;
-
-namespace UserManager.Users.Api.Entities;
+namespace UserManager.BuildingBlocks;
 
 public class Message(string id, string email)
 {
