@@ -12,9 +12,6 @@ public class CustomerMap : IEntityTypeConfiguration<Customer>
 
         builder.HasKey(x => x.Id);
 
-        builder.Property(x => x.Id)
-            .ValueGeneratedOnAdd();
-
         builder.Property(x => x.Name)
             .IsRequired()
             .HasMaxLength(100);
@@ -27,15 +24,19 @@ public class CustomerMap : IEntityTypeConfiguration<Customer>
             .IsRequired()
             .HasMaxLength(20);
 
-        builder.HasOne(x => x.Address);
-
         builder.Property(x => x.CreatedAt)
             .IsRequired();
 
         builder.Property(x => x.UpdatedAt)
-            .IsRequired();
+            .IsRequired(false);
         
         builder.Property(x => x.DeletedAt)
             .IsRequired(false);
+        
+        builder.HasOne(x => x.Address)
+            .WithOne()
+            .HasForeignKey<Address>(x => x.CustomerId);
+        
+        builder.HasQueryFilter(x => x.DeletedAt != null);
     }
 }

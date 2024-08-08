@@ -13,5 +13,4 @@ public class Address : IEntityState
     public DateTime? DeletedAt { get; set; }
     
     public Guid CustomerId { get; set; }
-    public Customer Customer { get; set; }
 }
