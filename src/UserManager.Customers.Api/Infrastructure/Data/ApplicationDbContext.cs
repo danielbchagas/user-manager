@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using UserManager.Customers.Api.Entities;
 
@@ -11,6 +12,8 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.HasDefaultSchema("public");
+
+        builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
         base.OnModelCreating(builder);
     }
